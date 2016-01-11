@@ -45,7 +45,7 @@
   }
 
   function checkNodes (nodes) {
-    nodes.forEach(function (node) {
+    Array.prototype.slice.call(nodes).forEach(function (node) {
       if (isDiv(node) && (isYaColor(node) || hasSovetnikLink(node))) {
         remove(node);
         setTimeout(function () {remove(node);}, 500);
