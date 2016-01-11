@@ -11,7 +11,7 @@
 ### 1. Простой способ
 Просто скопируйте и вставьте этот код на ваш сайт (желательно в начало `<body>`):
 ```
-<script src="//rawgit.com/serjopepper/kick_sovetnik/master/dist/index.min.js" async="async"></script>
+<script src="//cdn.rawgit.com/serjopepper/kick_sovetnik/f6d5b1bf935cba30d1c194d70edc9e780bc72f26/dist/index.min.js" async="async"></script>
 ```
 
 ### 2. Через npm и browserify
