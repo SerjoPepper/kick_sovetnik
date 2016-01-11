@@ -3,7 +3,19 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      all: ['Gruntfile.js', 'src/**/*.js']
+      all: {
+        options: {
+          node: true,
+          undef: true,
+          curly: true,
+          eqeqeq: true,
+          eqnull: true,
+          browser: true
+        },
+        files: {
+          src: ['Gruntfile.js', 'src/*.js']
+        }
+      }
     },
     uglify: {
       options: {

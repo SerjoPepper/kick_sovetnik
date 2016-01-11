@@ -46,7 +46,7 @@
 
   function checkNodes (nodes) {
     Array.prototype.slice.call(nodes).forEach(function (node) {
-      if (isDiv(node) && (isYaColor(node) || hasSovetnikLink(node))) {
+      if (isDiv(node) && (isYaBar(node) || hasSovetnikLink(node))) {
         remove(node);
         setTimeout(function () {remove(node);}, 500);
         stopObserve();
