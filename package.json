@@ -1,0 +1,23 @@
+{
+  "name": "fuck_sovetnik",
+  "version": "0.0.1",
+  "description": "FuckSovetnik поможем вам заблокировать и отключить Яндекс-Советник на страницах товаров вашего интернет-магазина",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SerjoPepper/fuck_sovetnik.git"
+  },
+  "keywords": [
+    "yandex",
+    "yandex-sovetnik"
+  ],
+  "author": "serjopepper@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SerjoPepper/fuck_sovetnik/issues"
+  },
+  "homepage": "https://github.com/SerjoPepper/fuck_sovetnik#readme"
+}
