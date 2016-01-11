@@ -39,13 +39,13 @@
     records.forEach(function (record) {
       var addedNodes = record.addedNodes;
       if (addedNodes && addedNodes.length) {
-        checkNodes(nodes);
+        checkNodes(addedNodes);
       }
     });
   }
 
   function checkNodes (nodes) {
-    addNodes.forEach(function (node) {
+    nodes.forEach(function (node) {
       if (isDiv(node) && (isYaColor(node) || hasSovetnikLink(node))) {
         remove(node);
         setTimeout(function () {remove(node);}, 500);
