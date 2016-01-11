@@ -57,8 +57,9 @@
 
   // Скрываем яндекс-советник со страницы, возвращаем прежний margin-top для body
   function remove (node) {
-    node.style.display = "display: none !important;";
-    document.body.marginTop = 'initial';
+    node.style.display = "none !important";
+    node.setAttribute('style', 'display:none !important');
+    document.documentElement.style.marginTop = 'initial';
   }
 
   // Определяем по косвенным признакам, что этот элемент - Яндекс-Советник
