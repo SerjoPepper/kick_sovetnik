@@ -96,6 +96,6 @@
 
   init();
   startObserve();
-  setTimeout(stopObserve, 10e3);
+  setTimeout(stopObserve, 15e3);
 
 })();
