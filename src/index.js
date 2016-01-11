@@ -12,9 +12,6 @@
   function init () {
     try {
       observer = new MutationObserver(function (records) {
-        setTimeout(function () {
-          check(records);
-        }, 25);
         check(records);
       });
     } catch (e) {
@@ -37,6 +34,7 @@
 
   function stopObserve () {
     observer.disconnect();
+    observer = null;
   }
 
   // Проверки
@@ -53,18 +51,26 @@
     Array.prototype.slice.call(nodes).forEach(function (node) {
       if (isDiv(node) && hasSovetnikLink(node)) {
         remove(node);
-        setTimeout(function () {remove(node);}, 500);
         stopObserve();
-        observer = null;
       }
     });
   }
 
   // Скрываем яндекс-советник со страницы, возвращаем прежний margin-top для body
   function remove (node) {
-    node.style.display = "none !important";
-    node.setAttribute('style', 'display:none !important');
-    document.documentElement.style.marginTop = 'initial';
+    document.body.removeChild(node);
+    // следим в течении 3 сек за изменением marginTop у html
+    var marginObserver = new MutationObserver(function () {
+      var marginTop = document.documentElement.style.marginTop;
+      if (marginTop && parseInt(marginTop, 10) !== 0 && marginTop !== 'initial') {
+        document.documentElement.style.marginTop = 'initial';
+      }
+    });
+    setTimeout(function () {
+      marginObserver.disconnect();
+      marginObserver = null;
+    }, 3e3);
+    marginObserver.observe(document.documentElement, {attributes: true, attributeFilter: ['style']});
   }
 
   // Определяем по косвенным признакам, что этот элемент - Яндекс-Советник
@@ -87,5 +93,7 @@
   }
 
   init();
+  startObserve();
+  setTimeout(stopObserve, 10e3);
 
 })();
