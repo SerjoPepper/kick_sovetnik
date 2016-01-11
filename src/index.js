@@ -11,7 +11,12 @@
 
   function init () {
     try {
-      observer = new MutationObserver(check);
+      observer = new MutationObserver(function (records) {
+        setTimeout(function () {
+          check(records);
+        }, 25);
+        check(records);
+      });
     } catch (e) {
 
     }
@@ -46,7 +51,7 @@
 
   function checkNodes (nodes) {
     Array.prototype.slice.call(nodes).forEach(function (node) {
-      if (isDiv(node) && (isYaBar(node) || hasSovetnikLink(node))) {
+      if (isDiv(node) && hasSovetnikLink(node)) {
         remove(node);
         setTimeout(function () {remove(node);}, 500);
         stopObserve();
@@ -74,7 +79,7 @@
   }
 
   function hasSovetnikLink (node) {
-    return node.querySelector('[href*="sovetnik.market.yandex.ru"]');
+    return !!node.querySelector('[href*="sovetnik.market.yandex.ru"]');
   }
 
   function getStyle (node, prop) {
