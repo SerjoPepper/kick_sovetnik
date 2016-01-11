@@ -33,8 +33,10 @@
   }
 
   function stopObserve () {
-    observer.disconnect();
-    observer = null;
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
   }
 
   // Проверки
