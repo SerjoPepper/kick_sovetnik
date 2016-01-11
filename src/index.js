@@ -64,15 +64,16 @@
     // следим в течении 3 сек за изменением marginTop у html
     var marginObserver = new MutationObserver(function () {
       var marginTop = document.documentElement.style.marginTop;
-      if (marginTop && parseInt(marginTop, 10) !== 0 && marginTop !== 'initial') {
-        document.documentElement.style.marginTop = 'initial';
+      if (marginTop && parseInt(marginTop, 10) !== 0) {
+        document.documentElement.style.marginTop = '';
       }
     });
     setTimeout(function () {
       marginObserver.disconnect();
       marginObserver = null;
-    }, 3e3);
+    }, 5e3);
     marginObserver.observe(document.documentElement, {attributes: true, attributeFilter: ['style']});
+    document.documentElement.style.marginTop = '';
   }
 
   // Определяем по косвенным признакам, что этот элемент - Яндекс-Советник
