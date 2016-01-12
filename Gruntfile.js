@@ -25,13 +25,22 @@ module.exports = function (grunt) {
         src: 'src/index.js',
         dest: 'dist/index.min.js'
       }
+    },
+    copy: {
+      all: {
+        expand: true,
+        src: 'index.js',
+        cwd: 'src/',
+        dest: 'dist/'
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['jshint', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'copy']);
 
 };
