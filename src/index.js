@@ -51,7 +51,7 @@
 
   function checkNodes (nodes) {
     Array.prototype.slice.call(nodes).forEach(function (node) {
-      if (isDiv(node) && hasSovetnikLink(node)) {
+      if (isDiv(node) && (hasSovetnikLink(node) || isYaBar(node))) {
         remove(node);
         stopObserve();
       }

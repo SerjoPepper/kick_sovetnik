@@ -1,6 +1,6 @@
 {
   "name": "kick_sovetnik",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "KickSovetnik поможем вам заблокировать и отключить Яндекс-Советник на страницах товаров вашего интернет-магазина",
   "main": "lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SerjoPepper/fuck_sovetnik.git"
+    "url": "git+https://github.com/SerjoPepper/kick_sovetnik.git"
   },
   "keywords": [
     "yandex",
