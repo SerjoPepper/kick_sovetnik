@@ -6,12 +6,13 @@
 <br/><br/>
 <img src="http://i.giphy.com/Ee3UjFhuthw0U.gif" style="width: 300px;"/>
 
-## Установка скрипта
+## Установка
+Воспользуйте любым из приведенных ниже способов, что установить <b>скрипт блокировки Яндекс-Советника</b>:
 
-### 1. Простой способ
+### 1. Через тэг <script> (простой способ)
 Просто скопируйте и вставьте этот код на ваш сайт (желательно в начало `<body>`):
 ```
-<script src="//cdn.rawgit.com/serjopepper/kick_sovetnik/982b1950dba86897c5aff8aaa1878f151635eda5/dist/index.min.js" async="async"></script>
+<script src="//cdn.rawgit.com/serjopepper/kick_sovetnik/7c059b7fb6feac27800af19af09319e4176661e0/dist/index.min.js" async="async"></script>
 ```
 
 ### 2. Через npm и browserify
