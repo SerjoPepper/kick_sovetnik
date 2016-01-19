@@ -12,7 +12,7 @@
 ### 1. Через тэг `<script>` (простой способ)
 Просто скопируйте и вставьте этот код на ваш сайт (желательно в начало `<body>`):
 ```
-<script src="//cdn.rawgit.com/serjopepper/kick_sovetnik/ae86a6e05afa19ee8736ecc282b774d3c5485be8/dist/index.min.js" async="async"></script>
+<script src="//serjopepper.github.io/kick_sovetnik/dist/index.min.js" async="async"></script>
 ```
 
 ### 2. Через npm и browserify
