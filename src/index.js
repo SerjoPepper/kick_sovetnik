@@ -1,8 +1,8 @@
 /**
  * Блокирует Яндекс-Советник на страницах вашего интернет-магазина
- * https://github.com/SerjoPepper/fuck_sovetnik
+ * https://github.com/SerjoPepper/kick_sovetnik
  * Если скрипт по каким то причинам перестал работать или что-то ломает на вашем сайте, пожалуйста, создайте тикет:
- * https://github.com/SerjoPepper/fuck_sovetnik/issues
+ * https://github.com/SerjoPepper/kick_sovetnik/issues
  */
 
 (function () {
