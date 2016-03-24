@@ -78,9 +78,9 @@
 
   // Определяем по косвенным признакам, что этот элемент - Яндекс-Советник
   function isYaBar (node) {
-    return getStyle(node, 'background-color') === 'rgb(250, 223, 118)' &&
-      getStyle(node, 'position') === 'fixed' &&
-      getStyle(node, 'display') === 'table';
+    return getStyle(node, 'background-color') === 'rgb(250, 223, 117)' &&
+        getStyle(node, 'position') === 'fixed' &&
+        getStyle(node, 'display') === 'table';
   }
 
   function isDiv (node) {
@@ -97,6 +97,6 @@
 
   init();
   startObserve();
-  setTimeout(stopObserve, 15e3);
+  setTimeout(stopObserve, 15e5);
 
 })();
