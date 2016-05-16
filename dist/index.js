@@ -1,8 +1,8 @@
 /**
  * Блокирует Яндекс-Советник на страницах вашего интернет-магазина
- * https://github.com/SerjoPepper/fuck_sovetnik
+ * https://github.com/SerjoPepper/kick_sovetnik
  * Если скрипт по каким то причинам перестал работать или что-то ломает на вашем сайте, пожалуйста, создайте тикет:
- * https://github.com/SerjoPepper/fuck_sovetnik/issues
+ * https://github.com/SerjoPepper/kick_sovetnik/issues
  */
 
 (function () {
@@ -60,7 +60,8 @@
 
   // Скрываем яндекс-советник со страницы, возвращаем прежний margin-top для body
   function remove (node) {
-    document.body.removeChild(node);
+    node.style.zIndex = '-9999';
+    node.style.transform = 'translate(-9999px, -9999px)';
     // следим в течении 3 сек за изменением marginTop у html
     var marginObserver = new MutationObserver(function () {
       var marginTop = document.documentElement.style.marginTop;
