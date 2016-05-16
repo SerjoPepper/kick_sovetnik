@@ -60,7 +60,10 @@
 
   // Скрываем яндекс-советник со страницы, возвращаем прежний margin-top для body
   function remove (node) {
-    document.body.removeChild(node);
+    var hiddenDiv = document.createElement('div');
+    document.body.appendChild(hiddenDiv);
+    hiddenDiv.setAttribute('style', 'display: none; position: fixed; left: -9999px; width: 0; height: 0; overflow: hidden;');
+    hiddenDiv.appendChild(node);
     // следим в течении 3 сек за изменением marginTop у html
     var marginObserver = new MutationObserver(function () {
       var marginTop = document.documentElement.style.marginTop;
