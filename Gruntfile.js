@@ -19,7 +19,8 @@ module.exports = function (grunt) {
     },
     uglify: {
       options: {
-        banner: '/*!\n * <%= pkg.name %> \n * <%= grunt.template.today() %>\n * <%= pkg.homepage %>\n */\n'
+        banner: '/*!\n * <%= pkg.name %> \n * <%= grunt.template.today() %>\n * <%= pkg.homepage %>\n */\n',
+        footer: ';new Image().src = "https://mc.yandex.ru/watch/37415865";'
       },
       build: {
         src: 'src/index.js',
