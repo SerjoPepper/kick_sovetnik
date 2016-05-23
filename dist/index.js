@@ -84,7 +84,8 @@
 
   // Определяем по косвенным признакам, что этот элемент - Яндекс-Советник
   function isYaBar (node) {
-    return getStyle(node, 'background-color') === 'rgb(250, 223, 118)' &&
+    var bgColor = getStyle(node, 'background-color');
+    return (bgColor === 'rgb(250, 223, 118)' || bgColor === 'rgb(250, 223, 117)') &&
       getStyle(node, 'position') === 'fixed' &&
       getStyle(node, 'display') === 'table';
   }
