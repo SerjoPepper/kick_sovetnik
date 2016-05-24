@@ -10,9 +10,9 @@
 Воспользуйте любым из приведенных ниже способов, что установить <b>скрипт блокировки Яндекс-Советника</b>:
 
 ### 1. Через тэг `<script>` (простой способ)
-Просто скопируйте и вставьте этот код на ваш сайт (желательно в начало `<body>`):
+Просто скопируйте и вставьте этот код на ваш сайт (в *начало* `<head>`), этот скрипт должен грузится синхронно, до полной загрузки DOM:
 ```
-<script src="//serjopepper.github.io/kick_sovetnik/dist/index.min.js" async="async"></script>
+<script src="//serjopepper.github.io/kick_sovetnik/dist/index.min.js"></script>
 ```
 
 ### 2. Через npm и browserify

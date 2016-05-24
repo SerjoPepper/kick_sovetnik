@@ -7,6 +7,17 @@
 
 (function () {
 
+  function patchOnMessage() {
+    window.addEventListener('message', function (e) {
+      var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+      if (data && data.type === 'MBR_ENVIRONMENT') {
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+        e.data = {};
+      }
+    }, true);
+  }
+
   var observer;
 
   function init () {
@@ -102,8 +113,13 @@
     return window.getComputedStyle(node).getPropertyValue(prop);
   }
 
-  init();
-  startObserve();
-  setTimeout(stopObserve, 15e3);
+  try {
+    init();
+    startObserve();
+    patchOnMessage();
+    setTimeout(stopObserve, 15e3);
+  } catch (e) {
+
+  }
 
 })();
