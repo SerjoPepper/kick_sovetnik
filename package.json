@@ -1,8 +1,8 @@
 {
   "name": "kick_sovetnik",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "KickSovetnik поможем вам заблокировать и отключить Яндекс-Советник на страницах товаров вашего интернет-магазина",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
