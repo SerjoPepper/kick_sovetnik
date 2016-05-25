@@ -1,5 +1,3 @@
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/SerjoPepper/kick_sovetnik/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
 # Отключение Яндекс-Советника.
 
 Этот скрипт поможет заблокировать и полностью <b>отключить Яндекс-Советник</b> на вашем сайте.
@@ -11,7 +9,9 @@
 
 ### 1. Скачайть и скопировать скрипт.
 Скачайте и скопируйте в папку со своими скриптами следующий скрипт (или добавьте в общий файл с вашими скриптами):
-`https://serjopepper.github.io/kick_sovetnik/dist/index.min.js`
+```
+https://serjopepper.github.io/kick_sovetnik/dist/index.min.js
+```
 Затем вставьте этот скрипт на ваш сайт (в <b>начало</b> `<head>`), этот скрипт должен грузится синхронно, до полной загрузки DOM.
 
 ### 2. Через npm и browserify
