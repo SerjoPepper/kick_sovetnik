@@ -7,6 +7,27 @@
 
 (function () {
 
+  function patchOnMessage() {
+    window.addEventListener('message', function (e) {
+      var data; 
+      if (typeof e.data === 'string') {
+         try {
+           data = JSON.parse(e.data)
+         }
+         catch (e) {
+           return;
+         }
+      } else {
+        data = e.data
+      }
+      if (data && data.type === 'MBR_ENVIRONMENT') {
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+        e.data = {};
+      }
+    }, true);
+  }
+
   var observer;
 
   function init () {
@@ -60,7 +81,13 @@
 
   // Скрываем яндекс-советник со страницы, возвращаем прежний margin-top для body
   function remove (node) {
-    document.body.removeChild(node);
+    var style = node.style;
+    style.zIndex = '-9999';
+    style.webkitTransform =
+    style.MozTransform =
+    style.msTransform =
+    style.OTransform =
+    style.transform = 'translate(-9999px, -9999px)';
     // следим в течении 3 сек за изменением marginTop у html
     var marginObserver = new MutationObserver(function () {
       var marginTop = document.documentElement.style.marginTop;
@@ -78,9 +105,10 @@
 
   // Определяем по косвенным признакам, что этот элемент - Яндекс-Советник
   function isYaBar (node) {
-    return getStyle(node, 'background-color') === 'rgb(250, 223, 117)' &&
-        getStyle(node, 'position') === 'fixed' &&
-        getStyle(node, 'display') === 'table';
+    var bgColor = getStyle(node, 'background-color');
+    return (bgColor === 'rgb(250, 223, 118)' || bgColor === 'rgb(250, 223, 117)') &&
+      getStyle(node, 'position') === 'fixed' &&
+      getStyle(node, 'display') === 'table';
   }
 
   function isDiv (node) {
@@ -95,8 +123,14 @@
     return window.getComputedStyle(node).getPropertyValue(prop);
   }
 
-  init();
-  startObserve();
-  setTimeout(stopObserve, 15e5);
+  try {
+    init();
+    startObserve();
+    patchOnMessage();
+    setTimeout(stopObserve, 15e3);
+  } catch (e) {
+
+  }
 
 })();
+
