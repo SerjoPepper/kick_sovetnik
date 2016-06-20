@@ -12,13 +12,13 @@
       var data; 
       if (typeof e.data === 'string') {
          try {
-           data = JSON.parse(e.data)
+           data = JSON.parse(e.data);
          }
          catch (e) {
            return;
          }
       } else {
-        data = e.data
+        data = e.data;
       }
       if (data && data.type === 'MBR_ENVIRONMENT') {
         e.stopImmediatePropagation();
