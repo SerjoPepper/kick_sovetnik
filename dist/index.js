@@ -9,7 +9,17 @@
 
   function patchOnMessage() {
     window.addEventListener('message', function (e) {
-      var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+      var data; 
+      if (typeof e.data === 'string') {
+         try {
+           data = JSON.parse(e.data);
+         }
+         catch (e) {
+           return;
+         }
+      } else {
+        data = e.data;
+      }
       if (data && data.type === 'MBR_ENVIRONMENT') {
         e.stopImmediatePropagation();
         e.stopPropagation();
@@ -123,3 +133,4 @@
   }
 
 })();
+
