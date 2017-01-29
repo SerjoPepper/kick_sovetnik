@@ -87,7 +87,7 @@
       }
     }
     styleNode.type = 'text/css';
-    styleNode.appendChild(document.createTextNode(selector + '{' + css + '}'));
+    styleNode.appendChild(document.createTextNode(selector + ', ' + selector + ':hover{' + css + '}'));
     return styleNode;
   }
 
@@ -114,10 +114,12 @@
         addStyleNode('#' + node.id, {
           'pointer-events': 'none'
         });
+        node.removeEventListener('mouseover', onMouseEnter, true);
         node.removeEventListener('mouseenter', onMouseEnter, true);
       };
+      node.addEventListener('mouseover', onMouseEnter, true);
       node.addEventListener('mouseenter', onMouseEnter, true);
-    }, 5e3);
+    }, 3e3);
 
     addStyleNode('#' + node.id, rootStyles);
     addStyleNode('#' + node.id + ' *', {
