@@ -82,12 +82,13 @@
     var styleNode = document.createElement('style');
     var css = '';
     for (var k in styles) {
-      if (styles.hasOwnProperty(k))
+      if (styles.hasOwnProperty(k)) {
         css += k + ':' + styles[k] + ' !important;\n';
+      }
     }
     styleNode.type = 'text/css';
     styleNode.appendChild(document.createTextNode(selector + '{' + css + '}'));
-    document.body.appendChild(styleNode)
+    document.body.appendChild(styleNode);
   }
 
   function propName(s) {
@@ -102,16 +103,17 @@
       'box-shadow': 'none',
       'border-color': 'transparent',
       'pointer-events': 'none'
-    }
+    };
     for (var k in rootStyles) {
-      if (rootStyles.hasOwnProperty(k))
-        node.style[propName(k)] = rootStyles[k] + ' !important'
+      if (rootStyles.hasOwnProperty(k)) {
+        node.style[propName(k)] = rootStyles[k] + ' !important';
+      }
     }
-    addStyleNode('#' + node.id, rootStyles)
+    addStyleNode('#' + node.id, rootStyles);
     addStyleNode('#' + node.id + ' *', {
       opacity: '0',
       'pointer-events': 'none'
-    })
+    });
     // следим в течении 3 сек за изменением marginTop у html
     var marginObserver = new MutationObserver(function () {
       var marginTop = document.documentElement.style.marginTop;
@@ -144,7 +146,9 @@
     startObserve();
     patchOnMessage();
   } catch (e) {
-    console.error('error while kick sovetnik', e)
+    if (typeof console !== 'undefined') {
+      console.error('error while kick sovetnik', e);
+    }
   }
 
 })();
