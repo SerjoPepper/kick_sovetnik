@@ -78,7 +78,7 @@
     });
   }
 
-  function addStyleNode(selector, styles) {
+  function createStyleNode(selector, styles) {
     var styleNode = document.createElement('style');
     var css = '';
     for (var k in styles) {
@@ -88,6 +88,11 @@
     }
     styleNode.type = 'text/css';
     styleNode.appendChild(document.createTextNode(selector + '{' + css + '}'));
+    return styleNode;
+  }
+
+  function addStyleNode(selector, styles) {
+    var styleNode = createStyleNode(selector, styles);
     document.body.appendChild(styleNode);
   }
 
@@ -101,19 +106,25 @@
       background: 'transparent',
       transition: 'none',
       'box-shadow': 'none',
-      'border-color': 'transparent',
-      'pointer-events': 'none'
+      'border-color': 'transparent'
     };
-    for (var k in rootStyles) {
-      if (rootStyles.hasOwnProperty(k)) {
-        node.style[propName(k)] = rootStyles[k] + ' !important';
-      }
-    }
+
+    setTimeout(function () {
+      var onMouseEnter = function () {
+        addStyleNode('#' + node.id, {
+          'pointer-events': 'none'
+        });
+        node.removeEventListener('mouseenter', onMouseEnter, true);
+      };
+      node.addEventListener('mouseenter', onMouseEnter, true);
+    }, 5e3);
+
     addStyleNode('#' + node.id, rootStyles);
     addStyleNode('#' + node.id + ' *', {
       opacity: '0',
       'pointer-events': 'none'
     });
+
     // следим в течении 3 сек за изменением marginTop у html
     var marginObserver = new MutationObserver(function () {
       var marginTop = document.documentElement.style.marginTop;
@@ -141,7 +152,40 @@
     return window.getComputedStyle(node).getPropertyValue(prop);
   }
 
+  // function removeAttrs (attr, selector) {
+  //   var elements = document.querySelectorAll(selector);
+  //   for (var i = 0; i < elements.length; i++) {
+  //     elements[i].removeAttribute(attr);
+  //   }
+  // }
+
+  // function removeElements(selector) {
+  //   var elements = document.querySelectorAll(selector);
+  //   for (var i = 0; i < elements.length; i++) {
+  //     elements[i].parentNode.removeChild(elements[i])
+  //   }
+  // }
+
   try {
+    /*
+    removeElements('meta');
+    removeAttrs('itemscope', '[itemscope]');
+    removeAttrs(
+      'property',
+      '[property="gr:mpn"],[property="gr:hasEAN_UCC-13"]'
+    );
+    removeAttrs(
+      'itemprop',
+      '[itemprop="name"],[property="gr:name"],[itemprop="brand"],[itemprop="productID"],[itemprop="isbn"],[itemprop="mpn"]' +
+      ',[itemprop="hasMPN"],[itemprop="model"],[itemprop="model"],[itemprop=name],[itemprop^="gtin"],[itemprop$="category"]' +
+      ',[itemprop="price"],[itemprop="offers"],[itemprop="offer"]'
+    );
+    removeAttrs(
+      'itemtype',
+      '[itemtype*="schema.org/Product"],[itemtype*="data-vocabulary.org/Product"],[itemtype*="schema.org/Offer"]'
+    );
+    */
+
     init();
     startObserve();
     patchOnMessage();

@@ -113,11 +113,11 @@
       var onMouseEnter = function () {
         addStyleNode('#' + node.id, {
           'pointer-events': 'none'
-        })
-        node.removeEventListener('mouseenter', onMouseEnter, true)
-      }
-      node.addEventListener('mouseenter', onMouseEnter, true)
-    }, 5e3)
+        });
+        node.removeEventListener('mouseenter', onMouseEnter, true);
+      };
+      node.addEventListener('mouseenter', onMouseEnter, true);
+    }, 5e3);
 
     addStyleNode('#' + node.id, rootStyles);
     addStyleNode('#' + node.id + ' *', {
