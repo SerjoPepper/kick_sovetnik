@@ -17,12 +17,12 @@ https://serjopepper.github.io/kick_sovetnik/dist/index.min.js
 ### 2. Через npm и browserify
 Установите:
 ```
-npm install --save kick_sovetnick
+npm install --save kick_sovetnik
 ```
 
 Подключите в ваших скриптах (скрипт исполняется автоматически);
 ```
-require('kick_sovetnick');
+require('kick_sovetnik');
 ```
 
 Если у вас перестал работать скрипт или скрипт ломает ваш сайт, создайте тикет:
