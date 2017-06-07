@@ -72,7 +72,7 @@
 
   function checkNodes (nodes) {
     Array.prototype.slice.call(nodes).forEach(function (node) {
-      if (isDiv(node) && (hasSovetnikLink(node))) {
+      if (isDiv(node) && (hasSovetnikImage(node))) {
         remove(node);
       }
     });
@@ -148,6 +148,14 @@
 
   function hasSovetnikLink (node) {
     return !!node.querySelector('[href*="sovetnik.market.yandex.ru"]');
+  }
+
+  // найти по картинке
+  function hasSovetnikImage (node) {
+    if(node.nodeName === '#text'){
+      return false;
+    }
+    return !!node.querySelector('[src*="data:image/png;base64,iVBORw0KGgoAAAA"]');
   }
 
   function getStyle (node, prop) {
